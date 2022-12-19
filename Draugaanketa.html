@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anketa par draugu</title>
+     <style> 
+        body{
+            text-align: center;
+            font-size: 1cm;
+            color: rgb(0, 0, 0);
+            background-color: #dc607d;
+
+        }
+        section{
+            /* display: grid; */
+            place-items: center;
+            /* min-height: 100vh; */
+        }
+        .hidden{
+            opacity: 1;
+            transition: all 5s;
+        }
+        .show{
+            opacity: 1;
+        }
+
+
+        input[ type=submit]{
+            background-color: rgb(49, 165, 291);
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+            font-size: 0.5cm;
+
+        }
+    </style>
+    <script arc="anketAPP.js"></script>
+
+</head>
+
+
+    <h1></h1>
+<!--
+    <form action="https://docs.google.com/spreadsheets/d/1tMODRuz4T5MYVOGtdLV5j5EqX1MKoz4F_RySpr0YLdE/edit#gid=0">
+        <section class="hidden">
+    <label for="vards">Ievadi savu vārdu:</label>
+    <br>
+    <input type="text" id="vārds" name="vārds">
+</section>
+<section class="hidden">
+    <label for="vards">Ievadi savu uzvārdu:</label>
+    <br>
+    <input type="text" id="vārds" name="vārds">
+</section>
+<section class="hidden">
+    <label for="vārds">Norādi savu klasi:</label>
+    <br>
+    <input type="text" id="klase" name="klase">
+</section>
+<section class="hidden">
+    <label for="vārds">Uz kuru datumu tu vēlētos pieteikties konsultācijai:</label>
+    <br>
+    <input type="date" id="datums" name="datums">
+
+</section>
+
+    <br><br>
+
+<input type="submit" name="" id="" value="Nosūtīt pieteikumu">
+    </form>
+-->
+
+
+<form method="post" id="sheetdb-form"
+  action="https://sheetdb.io/api/v1/ze5bh1nmf1gc0">
+    Tavs vārds: <br> <input name="data[Tavs vārds]"> <br>
+    Tavs uzvārds: <br><input name="data[Tavs uzvārds]"> <br>
+    Drauga dzimums: <br> <input name="data[Drauga dzimums]"> <br>
+    Drauga intereses: <br> <input name="data[Drauga intereses]"> <br>
+    Drauga rakstura īpašības: <br> <input name="data[Drauga rakstura īpašības]"> <br>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+  var form = document.getElementById('sheetdb-form');
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+    }).then(
+        response => response.json()
+    ).then((html) => {
+      // you can put any JS code here
+      alert('success')
+    });
+  });
+</script>
+
+
+</body>
+</html>
+
+
